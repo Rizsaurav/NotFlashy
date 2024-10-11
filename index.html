@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alkek Library Flashcards</title>
+
+  <!-- Google Fonts and Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f4f4;
+      background-image: linear-gradient(135deg, #fff7f3 25%, #b73d2a 75%);
+    }
+
+    /* How to Play Section */
+    .how-to-play {
+      background-color: #fff;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      color: #4a4a4a;
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .flashcard-container {
+      perspective: 1000px;
+    }
+
+    .flashcard {
+      width: 400px;
+      height: 250px;
+      background-color: #fff;
+      border: 3px solid #b73d2a;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 20px;
+      color: #333;
+      cursor: pointer;
+      transition: transform 0.8s ease;
+      transform-style: preserve-3d;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+      position: relative;
+      background: linear-gradient(135deg, #fff 25%, #f2e2df 75%);
+    }
+
+    .flashcard.flip {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      backface-visibility: hidden;
+      border-radius: 20px;
+    }
+
+    .flashcard-front {
+      background-color: #fff;
+    }
+
+    .flashcard-back {
+      background-color: #f9f4f4;
+      color: #b73d2a;
+      font-size: 16px;
+      line-height: 1.6;
+      padding: 20px;
+      transform: rotateY(180deg);
+      border: 3px solid #b73d2a;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .button {
+      background-color: #b73d2a;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #d44d3d;
+    }
+
+    /* Add icons on the cards */
+    .icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #b73d2a;
+    }
+
+    /* Icons can be shown before the content */
+    .flashcard-back .icon {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- How to Play Section -->
+  <div class="how-to-play">
+    <p><strong>How to Play:</strong> Click on the flashcard to flip and reveal more information. Press "Next Card" to
+      see the next flashcard. Keep flipping and exploring the Alkek Library resources!</p>
+  </div>
+
+  <div class="flashcard-container">
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-inner flashcard-front" id="flashcard-front">
+        <div>
+          <i class="fas fa-book icon"></i>
+          <p>Alkek One</p>
+        </div>
+      </div>
+      <div class="flashcard-inner flashcard-back" id="flashcard-back">
+        <div>
+          <i class="fas fa-graduation-cap icon"></i>
+          <p>Alkek One is a creative technology hub that offers workshops and a NASA-backed micro-credentialing program.
+            Students across all disciplines can use the technology for academic and professional development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Next Button -->
+  <button class="button" onclick="nextCard()">Next Card</button>
+
+  <script>
+    const flashcards = [
+      {front: "Alkek One", back: "Alkek One is a creative technology hub that offers workshops and a NASA-backed micro-credentialing program. Students across all disciplines can use the technology for academic and professional development."},
+      {front: "MakerSpace", back: "The MakerSpace provides access to digital fabrication tools like 3D printers, laser cutters, and a waterjet that can cut up to 1 inch thick. Students pay only for the materials used."},
+      {front: "YouStar Studios", back: "YouStar Studios are fully equipped video and audio recording spaces where students can use green-screen technology, professional microphones, and cameras to produce high-quality multimedia content."},
+      {front: "Interlibrary Loan", back: "Interlibrary Loan is a service that allows students to borrow materials from other libraries if they are not available at Alkek. Articles take around 48 hours to arrive, and physical books take 1-2 weeks."},
+      {front: "GeoSpace", back: "GeoSpace is an interactive data visualization lab where students can use tools like the Puffer Touch spherical projector and touch tables to explore data in new and immersive ways."},
+      {front: "ALIAS Technology Suites", back: "ALIAS Technology Suites are high-tech, immersive storytelling environments where students can engage in project-based learning in fields such as public history, communications, and even medicine."},
+      {front: "DesignSpace", back: "DesignSpace provides access to iMacs and Microsoft Surface Studio workstations that are perfect for working on 2D and 3D design, video editing, and drafting projects."},
+      {front: "Immersion Studio", back: "The Immersion Studio allows students to experience and create immersive content like virtual reality, augmented reality, and 360-degree video, offering a fully interactive space for experiential learning."}
+    ];
+
+    let currentIndex = 0;
+
+    function flipCard() {
+      const flashcardElement = document.getElementById('flashcard');
+      flashcardElement.classList.toggle('flip');
+    }
+
+    function nextCard() {
+      const flashcardElement = document.getElementById('flashcard');
+      const frontElement = document.getElementById('flashcard-front');
+      const backElement = document.getElementById('flashcard-back');
+
+      // Move to the next card
+      currentIndex = (currentIndex + 1) % flashcards.length;
+      frontElement.innerHTML = `<i class="fas fa-book icon"></i> <p>${flashcards[currentIndex].front}</p>`;
+      backElement.innerHTML = `<i class="fas fa-graduation-cap icon"></i> <p>${flashcards[currentIndex].back}</p>`;
+
+      // Reset flip animation if needed
+      if (flashcardElement.classList.contains('flip')) {
+        flashcardElement.classList.remove('flip');
+      }
+    }
+  </script>
+
+</body>
+
+</html>
