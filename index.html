@@ -142,8 +142,7 @@
       <div class="flashcard-inner flashcard-back" id="flashcard-back">
         <div>
           <i class="fas fa-graduation-cap icon"></i>
-          <p>Alkek One is a creative technology hub that offers workshops and a NASA-backed micro-credentialing program.
-            Students across all disciplines can use the technology for academic and professional development.</p>
+          <p>Alkek One is a creative technology hub offering workshops and a NASA-backed micro-credentialing program for all disciplines.</p>
         </div>
       </div>
     </div>
@@ -154,26 +153,35 @@
 
   <script>
     const flashcards = [
-      { front: "Lobby/Student Gallery", back: "The Lobby hosts the Alkek One Student Gallery, featuring creative works from students. The theme changes annually, showcasing how technology and creativity come together." },
-      { front: "DesignSpace", back: "DesignSpace offers iMacs and Microsoft Surface Studio workstations for 2D/3D design, video editing, and drafting. It's ideal for creative and design-based projects." },
-      { front: "MakerSpace", back: "MakerSpace is a digital fabrication shop equipped with 3D printers, laser cutters, and a waterjet. It offers workshops and a micro-credentialing program in digital fabrication." },
-      { front: "Alkek One Print Shop", back: "The print shop provides specialty printing services like large format printing, scanning, laminating, and comb binding at lower costs than commercial providers." },
-      { front: "Alkek One Instruction Room", back: "This room hosts workshops and events, including GIS training and micro-credentialing programs. It supports a wide range of academic learning opportunities." },
-      { front: "GeoSpace", back: "GeoSpace features tools for data visualization like the Puffer Touch spherical projector and interactive touch tables, making it perfect for exploring complex data." },
-      { front: "Immersion Studio", back: "The Immersion Studio provides access to virtual reality, augmented reality, and 360-degree video. It’s ideal for creating and experiencing immersive content." },
-      { front: "YouStar Studios", back: "YouStar Studios offer fully equipped video and audio recording spaces, featuring green-screen technology, professional microphones, and cameras for multimedia projects." },
-      { front: "Campus Partners", back: "The first floor also hosts partners like the ITAC Service Center and IDEA Center, offering technical support and innovation resources to students." },
-      { front: "Ask Alkek Desk", back: "The Ask Alkek Desk is a one-stop location for checking out materials, getting tech support, accessing course reserves, and receiving research assistance." },
-      { front: "Collaboration & Presentation Space", back: "Reservable collaboration spaces are equipped with display screens for group projects, while the Open Theater is perfect for presentations." },
-      { front: "Send&Print", back: "Send&Print manages campus printing, with 14 printers on the second floor alone. Students receive a $25 printing credit each semester." },
-      { front: "Computer Workstations", back: "The library offers over 100 computer workstations on the second floor, including specialized software for academic needs and accessible tech for all students." },
-      { front: "Scanners & Document Assembly", back: "Document scanners and assembly stations with tools like staplers, hole punchers, and paper cutters are available for student use." },
-      { front: "Special-Use Spaces", back: "Special-use spaces include the CommLab for practicing presentations and a media viewing room with equipment for watching VHS, DVDs, and other media formats." },
-      { front: "Popular Collections", back: "The third floor houses popular collections, including graphic novels, zines, and the juvenile collection. It’s a great place to explore new reads." },
-      { front: "Library Service Offices", back: "Learning Engagement staff support outreach and develop teaching resources, including Open Educational Resources and the First Year Experience." },
-      { front: "Fourth Floor (Instruction & Education)", back: "The fourth floor offers collaboration spaces, study rooms, and instructional rooms. It’s popular for group study and project work." },
-      { front: "Fifth & Sixth Floors (Quiet & Collaborative Study)", back: "These floors are designated for quiet study, with group study rooms and the majority of the library’s print collections." },
-      { front: "Seventh Floor (Unique Collections)", back: "Home to The Wittliff Collections, the seventh floor showcases the artistic and cultural heritage of the Southwest, with rotating exhibitions and study spaces." }
+      { front: "Lobby/Student Gallery", back: "The Alkek One Student Gallery showcases student-created art projects each year, with themes that change annually to align creativity with technology." },
+      { front: "DesignSpace", back: "Equipped with iMacs and Microsoft Surface Studio workstations, DesignSpace is perfect for 2D/3D design, video editing, and drafting projects." },
+      { front: "MakerSpace", back: "A digital fabrication shop featuring 3D printers, laser cutters, and a waterjet. Offers training to use equipment and workshops for digital fabrication skills." },
+      { front: "Alkek One Print Shop", back: "Offers large-format printing, scanning, laminating, and binding services at a reduced cost. Scanning is free of charge." },
+      { front: "Alkek One Instruction Room", back: "Used for workshops and special instructional events, including GIS basics and data mapping training." },
+      { front: "GeoSpace", back: "A data visualization space equipped with tools like the Puffer Touch spherical projector and touch tables, ideal for interactive data exploration." },
+      { front: "Immersion Studio", back: "A space to create and experience VR, AR, and 360-degree video, equipped with powerful computing tools and a library of immersive experiences." },
+      { front: "YouStar Studios", back: "Offers professional-grade video and audio recording spaces, including green-screen studios and audio booths for podcasts and performances." },
+      { front: "Campus Partners", back: "Includes partners like the ITAC Service Center and the IDEA Center, offering technical and entrepreneurial support to students." },
+      { front: "Ask Alkek Desk", back: "The main service desk for checking out materials, getting tech support, and accessing course reserves. Available both in-person and online." },
+      { front: "Collaboration & Presentation Space", back: "Features reservable rooms for team projects and an Open Theater for presentations. Ideal for group work and academic events." },
+      { front: "Send&Print", back: "Manages campus printing with 14 printers on the second floor and a $25 semester credit for students. Includes color printing options." },
+      { front: "Computer Workstations", back: "Over 100 workstations with academic software are available on the second floor, along with accessible TechSpots across campus." },
+      { front: "Scanners & Document Assembly", back: "Includes document scanners, staplers, and hole punchers for student use, with additional office supplies at the Ask Desk." },
+      { front: "Special-Use Spaces", back: "Includes the CommLab for presentation practice and a media viewing room for various formats, including VHS and DVDs." },
+      { front: "Popular Collections", back: "Located on the third floor, this area includes graphic novels, zines, and a juvenile collection with games and activities." },
+      { front: "Library Service Offices", back: "Learning Engagement staff support outreach and teaching resources, including Open Education Resources and First Year Experience programs." },
+      { front: "Fourth Floor (Instruction & Education)", back: "Features open study areas, private pods, and instructional rooms. Popular for group projects and quiet study." },
+      { front: "Fifth & Sixth Floors (Quiet & Collaborative Study)", back: "Home to most library collections, these floors offer quiet study spaces, private rooms, and group study rooms." },
+      { front: "Seventh Floor (Unique Collections)", back: "The Wittliff Collections feature Southwestern archives and exhibitions. Popular for research and scenic views of campus." }
     ];
 
-    let currentIndex
+    let currentIndex = 0;
+
+    function flipCard() {
+      const flashcardElement = document.getElementById('flashcard');
+      flashcardElement.classList.toggle('flip');
+    }
+
+    function nextCard() {
+      const flashcardElement = document.getElementById('flashcard');
+      const frontElement =
