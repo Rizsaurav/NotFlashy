@@ -154,40 +154,26 @@
 
   <script>
     const flashcards = [
-      {front: "Alkek One", back: "Alkek One is a creative technology hub that offers workshops and a NASA-backed micro-credentialing program. Students across all disciplines can use the technology for academic and professional development."},
-      {front: "MakerSpace", back: "The MakerSpace provides access to digital fabrication tools like 3D printers, laser cutters, and a waterjet that can cut up to 1 inch thick. Students pay only for the materials used."},
-      {front: "YouStar Studios", back: "YouStar Studios are fully equipped video and audio recording spaces where students can use green-screen technology, professional microphones, and cameras to produce high-quality multimedia content."},
-      {front: "Interlibrary Loan", back: "Interlibrary Loan is a service that allows students to borrow materials from other libraries if they are not available at Alkek. Articles take around 48 hours to arrive, and physical books take 1-2 weeks."},
-      {front: "GeoSpace", back: "GeoSpace is an interactive data visualization lab where students can use tools like the Puffer Touch spherical projector and touch tables to explore data in new and immersive ways."},
-      {front: "ALIAS Technology Suites", back: "ALIAS Technology Suites are high-tech, immersive storytelling environments where students can engage in project-based learning in fields such as public history, communications, and even medicine."},
-      {front: "DesignSpace", back: "DesignSpace provides access to iMacs and Microsoft Surface Studio workstations that are perfect for working on 2D and 3D design, video editing, and drafting projects."},
-      {front: "Immersion Studio", back: "The Immersion Studio allows students to experience and create immersive content like virtual reality, augmented reality, and 360-degree video, offering a fully interactive space for experiential learning."}
+      { front: "Lobby/Student Gallery", back: "The Lobby hosts the Alkek One Student Gallery, featuring creative works from students. The theme changes annually, showcasing how technology and creativity come together." },
+      { front: "DesignSpace", back: "DesignSpace offers iMacs and Microsoft Surface Studio workstations for 2D/3D design, video editing, and drafting. It's ideal for creative and design-based projects." },
+      { front: "MakerSpace", back: "MakerSpace is a digital fabrication shop equipped with 3D printers, laser cutters, and a waterjet. It offers workshops and a micro-credentialing program in digital fabrication." },
+      { front: "Alkek One Print Shop", back: "The print shop provides specialty printing services like large format printing, scanning, laminating, and comb binding at lower costs than commercial providers." },
+      { front: "Alkek One Instruction Room", back: "This room hosts workshops and events, including GIS training and micro-credentialing programs. It supports a wide range of academic learning opportunities." },
+      { front: "GeoSpace", back: "GeoSpace features tools for data visualization like the Puffer Touch spherical projector and interactive touch tables, making it perfect for exploring complex data." },
+      { front: "Immersion Studio", back: "The Immersion Studio provides access to virtual reality, augmented reality, and 360-degree video. It’s ideal for creating and experiencing immersive content." },
+      { front: "YouStar Studios", back: "YouStar Studios offer fully equipped video and audio recording spaces, featuring green-screen technology, professional microphones, and cameras for multimedia projects." },
+      { front: "Campus Partners", back: "The first floor also hosts partners like the ITAC Service Center and IDEA Center, offering technical support and innovation resources to students." },
+      { front: "Ask Alkek Desk", back: "The Ask Alkek Desk is a one-stop location for checking out materials, getting tech support, accessing course reserves, and receiving research assistance." },
+      { front: "Collaboration & Presentation Space", back: "Reservable collaboration spaces are equipped with display screens for group projects, while the Open Theater is perfect for presentations." },
+      { front: "Send&Print", back: "Send&Print manages campus printing, with 14 printers on the second floor alone. Students receive a $25 printing credit each semester." },
+      { front: "Computer Workstations", back: "The library offers over 100 computer workstations on the second floor, including specialized software for academic needs and accessible tech for all students." },
+      { front: "Scanners & Document Assembly", back: "Document scanners and assembly stations with tools like staplers, hole punchers, and paper cutters are available for student use." },
+      { front: "Special-Use Spaces", back: "Special-use spaces include the CommLab for practicing presentations and a media viewing room with equipment for watching VHS, DVDs, and other media formats." },
+      { front: "Popular Collections", back: "The third floor houses popular collections, including graphic novels, zines, and the juvenile collection. It’s a great place to explore new reads." },
+      { front: "Library Service Offices", back: "Learning Engagement staff support outreach and develop teaching resources, including Open Educational Resources and the First Year Experience." },
+      { front: "Fourth Floor (Instruction & Education)", back: "The fourth floor offers collaboration spaces, study rooms, and instructional rooms. It’s popular for group study and project work." },
+      { front: "Fifth & Sixth Floors (Quiet & Collaborative Study)", back: "These floors are designated for quiet study, with group study rooms and the majority of the library’s print collections." },
+      { front: "Seventh Floor (Unique Collections)", back: "Home to The Wittliff Collections, the seventh floor showcases the artistic and cultural heritage of the Southwest, with rotating exhibitions and study spaces." }
     ];
 
-    let currentIndex = 0;
-
-    function flipCard() {
-      const flashcardElement = document.getElementById('flashcard');
-      flashcardElement.classList.toggle('flip');
-    }
-
-    function nextCard() {
-      const flashcardElement = document.getElementById('flashcard');
-      const frontElement = document.getElementById('flashcard-front');
-      const backElement = document.getElementById('flashcard-back');
-
-      // Move to the next card
-      currentIndex = (currentIndex + 1) % flashcards.length;
-      frontElement.innerHTML = `<i class="fas fa-book icon"></i> <p>${flashcards[currentIndex].front}</p>`;
-      backElement.innerHTML = `<i class="fas fa-graduation-cap icon"></i> <p>${flashcards[currentIndex].back}</p>`;
-
-      // Reset flip animation if needed
-      if (flashcardElement.classList.contains('flip')) {
-        flashcardElement.classList.remove('flip');
-      }
-    }
-  </script>
-
-</body>
-
-</html>
+    let currentIndex
